@@ -1,0 +1,21 @@
+<h1>Photos of the User: <%=@users.first_name %> <%=@users.last_name %></h1>
+<body>
+<% @photos.each do |photo| %>
+  <div>
+    <%= image_tag photo.file_name %>
+    Photo created at <%= photo.date_time %>
+    <%@comments = photo.comments %>
+    <h2>Comments:</h2> <%@comments.each do |comment| %>
+      <div>
+        <li>
+          <%=comment.comment_text %>
+          ---Posted by: <% @user = User.find(comment.user_id) %>
+          <%=link_to @user.first_name,{action:"index", :id=> @user.id} %> <%= @user.last_name %>
+          on <%= comment.date_time %>
+        </li>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+</body>
+

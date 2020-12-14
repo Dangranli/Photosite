@@ -1,0 +1,24 @@
+<h1> PhotoSite User List </h1>
+<body>
+<font size="5"> There are 6 Users </font>
+<br>
+<br>
+
+<table>
+  <tr>
+    <th><font size="5">User</font> </th>
+    <th><font size="5">FirstName</font> </th>
+    <th><font size="5">LastName</font> </th>
+  </tr>
+  <% @users_all.each do |user| %>
+    <tr>
+
+      <td> <font size="5"> <%= user.id %></font> </td>
+      <td> <font size="5"> <%= link_to user.first_name, {:action =>"index",:controller => "photo",:id => user.id} %>
+      <td> <font size="5"> <%= user.last_name %> </font> </td>
+    </tr>
+  <% end %>
+</table>
+</body>
+
+
